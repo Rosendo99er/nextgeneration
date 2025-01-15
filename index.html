@@ -27,6 +27,7 @@
     --company-contact-url: https://www.cream-collection.de/kontakt;
     --company-logo-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/59b84de7-525d-4992-99ec-ac57b73c25b6/image-640x211.png");
     --clara-image-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/8b4f2525-c964-461b-a6a9-daa9ef61f180/l0,t0,w482,h410/image-240x204.jpg");
+    --start-video-url: "";
   
     --company-logo-width: 200px;
     --company-logo-height: 80px;
@@ -244,6 +245,7 @@
     --company-contact-url: https://www.cream-collection.de/kontakt;
     --company-logo-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/59b84de7-525d-4992-99ec-ac57b73c25b6/image-640x211.png");
     --clara-image-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/8b4f2525-c964-461b-a6a9-daa9ef61f180/l0,t0,w482,h410/image-240x204.jpg");
+    --start-video-url: "";
   
     --company-logo-width: 200px;
     --company-logo-height: 80px;
@@ -455,6 +457,7 @@
   --company-contact-url: https://www.creditreform.de/muenchen/creditreform/kontakt;
   --company-logo-url: url("https://raw.githubusercontent.com/Rosendo99er/images/refs/heads/main/LogoCreditreformMuenchen.png");
   --clara-image-url: url("https://raw.githubusercontent.com/Rosendo99er/images/refs/heads/main/iStock-2167773182-modified-8e1865b3-9c16-49bb-bd42-1a1fc824f9ff.jpg");
+  --start-video-url: "";
 
   --company-logo-width: 300px;
   --company-logo-height: 80px;
@@ -670,6 +673,7 @@
   --company-contact-url: https://www.creditreform.de/muenchen/creditreform/kontakt;
   --company-logo-url: url("https://raw.githubusercontent.com/Rosendo99er/images/refs/heads/main/LogoCreditreformMuenchen.png");
   --clara-image-url: url("https://raw.githubusercontent.com/Rosendo99er/images/refs/heads/main/iStock-2167773182-modified-8e1865b3-9c16-49bb-bd42-1a1fc824f9ff.jpg");
+  --start-video-url: url("https://www.youtube.com/embed/A0UWBc44Gws");
 
   --company-logo-width: 300px;
   --company-logo-height: 80px;
@@ -6158,7 +6162,8 @@
   
           <div id="video-container">
             <iframe 
-                src="https://www.youtube.com/embed/A0UWBc44Gws" 
+                id="video-frame"
+                src="" 
                 title="YouTube video player" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
@@ -6259,17 +6264,6 @@
     const consentGiven = this.checked;
     document.getElementById('chatbot-input').disabled = !consentGiven;
       
-    // Video-Container sichtbar/unsichtbar machen
-    // toggleVideoContainer(consentGiven);
-    
-
-    //const videoContainer = document.getElementById('video-container');
-    //if (consentGiven) {
-    //    videoContainer.style.display = 'none'; // Video-Container ausblenden
-    //} else {
-    //    videoContainer.style.display = 'block'; // Video-Container wieder anzeigen
-    //}
-  
 
 
   const inputElement = document.getElementById('chatbot-input');
@@ -7519,7 +7513,7 @@
   
   
   
-  document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
         const imageElement = document.getElementById('clara-image');
   
         if (imageElement) {
@@ -7534,8 +7528,26 @@
           console.error('Bild-Element nicht gefunden');
         }
       });
+
+      
+    document.addEventListener('DOMContentLoaded', function() {
+        const videoFrame = document.getElementById('video-frame');
   
+        if (videoFrame) {
+            const videoUrl = getComputedStyle(document.documentElement).getPropertyValue('--start-video-url').trim().replace(/(^"|"$)/g, ''); // Entfernt Anführungszeichen aus der CSS-Variable
+            console.log('Video-URL aus CSS-Variable:', videoUrl);
   
+            if (videoUrl) {
+                // Setzen des Videolinks
+                videoFrame.src = videoUrl;
+                console.log('Video gesetzt:', videoFrame.src);
+            } else {
+                console.log('Keine Video-URL gesetzt. Das Video wird nicht angezeigt.');
+            }
+        } else {
+            console.error('Video-Element nicht gefunden');
+        }
+    });
   
   
   
