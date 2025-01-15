@@ -6162,8 +6162,7 @@
   
           <div id="video-container">
             <iframe 
-                id="video-frame"
-                src="" 
+                src="https://www.youtube.com/embed/A0UWBc44Gws" 
                 title="YouTube video player" 
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                 allowfullscreen>
@@ -7530,24 +7529,24 @@
       });
 
       
-    document.addEventListener('DOMContentLoaded', function() {
-        const videoFrame = document.getElementById('video-frame');
+    //document.addEventListener('DOMContentLoaded', function() {
+    //    const videoFrame = document.getElementById('video-frame');
+    //
+    //    if (videoFrame) {
+    //        const videoUrl = getComputedStyle(document.documentElement).getPropertyValue('--start-video-url').trim();
+    //      console.log('Video-URL aus CSS-Variable:', videoUrl);
   
-        if (videoFrame) {
-            const videoUrl = getComputedStyle(document.documentElement).getPropertyValue('--start-video-url').trim();
-            console.log('Video-URL aus CSS-Variable:', videoUrl);
-  
-            if (videoUrl) {
-                // Setzen des Videolinks
-                videoFrame.src = videoUrl;
-                console.log('Video gesetzt:', videoFrame.src);
-            } else {
-                console.log('Keine Video-URL gesetzt. Das Video wird nicht angezeigt.');
-            }
-        } else {
-            console.error('Video-Element nicht gefunden');
-        }
-    });
+    //        if (videoUrl) {
+    //            // Setzen des Videolinks
+    //            videoFrame.src = videoUrl;
+    //            console.log('Video gesetzt:', videoFrame.src);
+    //        } else {
+    //            console.log('Keine Video-URL gesetzt. Das Video wird nicht angezeigt.');
+    //        }
+    //    } else {
+    //        console.error('Video-Element nicht gefunden');
+    //    }
+    //});
   
   
   
