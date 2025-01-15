@@ -6238,11 +6238,21 @@
   </div>
   
     
-  <script type="module" src="videoToggle.js">
-      import { toggleVideoContainer } from './videoToggle.js'; // Einmal importieren
-  </script>
+<script type="module">
+    import { toggleVideoContainer } from './videoToggle.js'; // Einmal importieren
+    
+    document.getElementById('chatbot-consent-checkbox').addEventListener('change', function() {
+    const consentGiven = this.checked;
+    document.getElementById('chatbot-input').disabled = !consentGiven;
+
+    // Video-Container sichtbar/unsichtbar machen
+    toggleVideoContainer(consentGiven);
+
+});
+
+</script>
   
-  <script>
+<script>
   
     // Überwache das Kontrollkästchen und aktiviere/deaktiviere das - copyright cream5collection Stephan Vila - Eingabefeld und die Buttons je nach Zustand
     document.getElementById('chatbot-consent-checkbox').addEventListener('change', function() {
@@ -6250,7 +6260,7 @@
     document.getElementById('chatbot-input').disabled = !consentGiven;
       
     // Video-Container sichtbar/unsichtbar machen
-    toggleVideoContainer(consentGiven);
+    // toggleVideoContainer(consentGiven);
     
 
     //const videoContainer = document.getElementById('video-container');
