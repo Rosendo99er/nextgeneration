@@ -7534,7 +7534,7 @@
         const videoFrame = document.getElementById('video-frame');
   
         if (videoFrame) {
-            const videoUrl = getComputedStyle(document.documentElement).getPropertyValue('--start-video-url').trim().replace(/(^"|"$)/g, ''); // Entfernt Anführungszeichen aus der CSS-Variable
+            const videoUrl = getComputedStyle(document.documentElement).getPropertyValue('--start-video-url').trim();
             console.log('Video-URL aus CSS-Variable:', videoUrl);
   
             if (videoUrl) {
