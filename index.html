@@ -6834,7 +6834,7 @@
   function onBotMessageDisplayed() {
       console.log("onBotMessageDisplayed wurde aufgerufen");
       setTimeout(() => {
-          scrollBotWindowDown(15); // Scrollt das Bot-Fenster 5 Zeilen nach unten
+          scrollBotWindowDown(15); // Scrollt das Bot-Fenster 15 Zeilen nach unten
       }, 100); // Kurze Verzögerung, um sicherzustellen, dass die Nachricht vollständig gerendert ist
   }
   
@@ -9073,15 +9073,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   
-    //function checkForSuggestedLink() {
-    //    const lastBotMessage = document.querySelector('.bot-message:last-child');
-    //    if (!lastBotMessage) {
-    //        console.warn('Keine .bot-message gefunden!');
-    //        return; // Beende die Funktion, wenn keine Nachricht vorhanden ist
-    //    }
-    //    updateInputState('.suggested-link');
-    //}
-
 
     function checkForSendEmailLink() {
         const lastBotMessage = document.querySelector('.bot-message:last-child');
@@ -9107,22 +9098,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
     // Beobachte Änderungen im DOM (für neue bot-messages)
     const observer = new MutationObserver(() => {
         console.log('DOM geändert:', document.querySelectorAll('.bot-message'));
         setTimeout(() => {
-            checkForSuggestedLink();
             checkForSendEmailLink();
         }, 100); // Verzögerung, um sicherzustellen, dass das DOM aktualisiert ist
     });
@@ -9146,7 +9125,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // Prüfe, ob es bereits eine .bot-message gibt
         if (initialBotMessage) {
             console.log('Initiale bot-message gefunden:', initialBotMessage);
-            checkForSuggestedLink();
             checkForSendEmailLink();
         } else {
             console.log('Keine initiale bot-message vorhanden.');
