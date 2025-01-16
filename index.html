@@ -9075,25 +9075,40 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
     function checkForSendEmailLink() {
-        const lastBotMessage = document.querySelector('.bot-message:last-child');
-        if (!lastBotMessage) {
-            console.warn('Keine .bot-message gefunden!');
-            return;
-        }
+      // Entsperre alle Felder zuerst
+      const inputField = document.getElementById("chatbot-input");
+      const inputIcon = document.getElementById("input-right-svg");
+      const dropdownField = document.getElementById("chatbot-themes");
+      const dropdownOption = document.getElementById("theme");
+  
+      if (inputField) inputField.disabled = false;
+      if (inputIcon) {
+          inputIcon.style.pointerEvents = "auto";
+          inputIcon.style.opacity = "1";
+      }
+      if (dropdownField) dropdownField.disabled = false;
+      if (dropdownOption) dropdownOption.disabled = false;
 
-        // Suche nach einem Link mit der Klasse 'send-email-link' innerhalb der letzten Bot-Nachricht
-        const sendEmailLink = lastBotMessage.querySelector('.send-email-link');
-        if (!sendEmailLink) {
-            console.warn('Kein send-email-link in der letzten Bot-Nachricht gefunden!');
-            return;
-        }
 
-        // Prüfen, ob die ID des Links ungleich "other" ist
-        if (sendEmailLink.id !== 'other') {
-            updateInputState('.send-email-link'); // Aufruf nur, wenn die ID nicht "other" ist
-        } else {
-            console.info('Die ID ist "other". updateInputState wird nicht aufgerufen.');
-        }
+      const lastBotMessage = document.querySelector('.bot-message:last-child');
+      if (!lastBotMessage) {
+          console.warn('Keine .bot-message gefunden!');
+          return;
+      }
+
+      // Suche nach einem Link mit der Klasse 'send-email-link' innerhalb der letzten Bot-Nachricht
+      const sendEmailLink = lastBotMessage.querySelector('.send-email-link');
+      if (!sendEmailLink) {
+          console.warn('Kein send-email-link in der letzten Bot-Nachricht gefunden!');
+          return;
+      }
+
+      // Prüfen, ob die ID des Links ungleich "other" ist
+      if (sendEmailLink.id !== 'other') {
+          updateInputState('.send-email-link'); // Aufruf nur, wenn die ID nicht "other" ist
+      } else {
+          console.info('Die ID ist "other". updateInputState wird nicht aufgerufen.');
+      }
     }
 
 
