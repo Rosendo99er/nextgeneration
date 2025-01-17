@@ -3562,17 +3562,18 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: var(--secondary-font-color) !important;
     font-family: var(--company-font-family);
     font-size: var(--media-font-size-text) !important;
+    background-color: var(--primary-company-background-color) !important;
     font-weight: bold !important;
     text-align: center !important;
     padding: 10px !important;
-    z-index: 1 !important;
+    z-index: 100000 !important;
     white-space: pre-wrap !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 80% !important;
   }
 
@@ -6303,17 +6304,21 @@
 <script>
   
   // Überwache das Kontrollkästchen und aktiviere/deaktiviere das - copyright cream5collection Stephan Vila - Eingabefeld und die Buttons je nach Zustand
-  document.getElementById('chatbot-consent-checkbox').addEventListener('change', function() {
+document.getElementById('chatbot-consent-checkbox').addEventListener('change', function() {
     const consentGiven = this.checked;
     document.getElementById('chatbot-input').disabled = !consentGiven;
-      
-    // Nachricht ein-/ausblenden
+
     const chatbotMessages = document.getElementById('chatbot-messages');
-    if (consentGiven) {
+
+    if (this.checked) {
+        // Nachricht dauerhaft entfernen, wenn das Häkchen gesetzt wird
         chatbotMessages.classList.add('hide-message');
-    } else {
-        chatbotMessages.classList.remove('hide-message');
     }
+
+    // Eingabefeld aktivieren/deaktivieren basierend auf dem Kontrollkästchen
+    document.getElementById('chatbot-input').disabled = !this.checked;
+
+    
 
     const inputElement = document.getElementById('chatbot-input');
 
