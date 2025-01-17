@@ -4,11 +4,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Chatbot</title>
   <script>
-    // Überprüfen, ob die URL den Parameter "nocache" enthält
     if (!window.location.href.includes("nocache")) {
-            // Seite neu laden und "nocache"-Parameter anhängen
-            window.location.href = window.location.href + (window.location.href.includes("?") ? "&" : "?") + "nocache=" + new Date().getTime();
-        }
+      const separator = window.location.href.includes("?") ? "&" : "?";
+      const newUrl = window.location.href.split("#")[0] + separator + "nocache=" + new Date().getTime();
+      window.location.href = newUrl;
+    } else {
+      // Entfernen Sie den Parameter aus der Adresszeile nach dem Laden
+      const cleanUrl = window.location.href.split("?")[0];
+      window.history.replaceState(null, null, cleanUrl);
+    }
   </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" />
   
