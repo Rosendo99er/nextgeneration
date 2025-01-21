@@ -451,7 +451,7 @@
 
 
 
-/*  ########################customer ######################## */
+ /* ########################customer ######################## */
 
 
 /* ########################Creditreform München######################## 
@@ -1350,7 +1350,7 @@
   }
 
 
-  /* ++++++++++++++++++++++++ ENDE Anwendung Chati free ++++++++++++++++++++++++ */
+ /* ++++++++++++++++++++++++ ENDE Anwendung Chati free ++++++++++++++++++++++++ */
   
   
   /* ++++++++++++++++++++++++ Anwendung Chati Sales ++++++++++++++++++++++++ 
@@ -6290,11 +6290,15 @@
       try {
         import('./videoToggle.js')
             .then(({ toggleVideoContainer }) => {
+                const chatbotMessages = document.getElementById('chatbot-messages');
+                chatbotMessages.classList.add('hide-message');
+
                 // Event Listener hinzufügen, wenn das Modul erfolgreich geladen wurde
+                
                 document.getElementById('chatbot-consent-checkbox').addEventListener('change', function () {
                     const consentGiven = this.checked;
                     document.getElementById('chatbot-input').disabled = !consentGiven;
-
+                
                     // Video-Container sichtbar/unsichtbar machen
                     toggleVideoContainer(consentGiven);
                 });
@@ -7183,7 +7187,9 @@ document.getElementById('chatbot-consent-checkbox').addEventListener('change', f
       fullMessage = fullMessage.replace(/```/g, '');  // Entferne alle übrigen ```
       fullMessage = fullMessage.replace(/^\s*html\s*$/gm, '');  // Entferne "html", wenn es alleine in einer Zeile steht
   
-  
+      // Ersetze zusammengehörige Doppelsterne (**text**) durch <strong>text</strong>
+      fullMessage = fullMessage.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        
       // Zeige die empfangene Nachricht im Chatfenster an
       displayCleanedData(fullMessage);
   
