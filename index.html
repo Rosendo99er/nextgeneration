@@ -242,7 +242,7 @@
 
 
 
-  /* ########################creamco######################## */
+  /* ########################creamco######################## 
 
   
   :root {
@@ -263,7 +263,7 @@
     --company-logo-height: 80px;
     --media-company-logo-width: 200px;
     --media-company-logo-height: 40px;
-  
+      
     --company-font-family: 'Quicksand', sans-serif;
     --company-font-weight: 300;
     
@@ -318,6 +318,9 @@
   
     --primary-loader-color: var(--secondary-company-color);
     --secondary-loader-color: var(--primary-company-color);
+
+    --video-background-color: var(--secondary-company-color-ligh);
+    --video-border-color: var(--secondary-company-color-ligh);
   
 --theme-value-1-de: "Bitte zeigen Sie mir eine aktuelle Forderungsaufstellung an.";
 --theme-text-1-de: "Forderungsaufstellung";
@@ -452,10 +455,10 @@
 
 
 
-/* ########################customer ######################## */
+ ########################customer ######################## */
 
 
-/* ########################Creditreform München######################## 
+/* ########################Creditreform München######################## */
   
   
 :root {
@@ -665,7 +668,7 @@
 
 
 
- ########################customer ######################## */
+/* ########################customer ######################## */
     
     
     
@@ -1281,24 +1284,31 @@
     position: relative;
   }
   
+
+
   #video-container {
     width: 100%;
     max-height: 100%;
-    margin: 20px auto;
+    margin-top: 10px;
     overflow: hidden;
-    padding-top: 56.25%;
-    z-index: 1000;
+    aspect-ratio: 16 / 9; /* Setzt das Verhältnis fest */
+    overflow: hidden; /* Verhindert Überlauf */
+    position: relative; /* Referenz für absolutes Positionieren */
+    border: 2px solid var(--secondary-border-color);
+    border-radius: var(--primary-border-radius);
+    background-color: var(--primary-company-color);
   }
 
   iframe {
     position: absolute;
-    top: 0%;
+    top: 25%;
     left: 0%;
     width: 100%;
     height: 100%;
-    max-height: 100%;
     border: none;
   }
+
+
 
 
 }   
@@ -1350,6 +1360,8 @@
     width: 100%;
     height: 100%;
     border: none;
+    border: 2px solid var(--video-border-color);
+    background-color: var(--video-background-color);
   }
 
 
