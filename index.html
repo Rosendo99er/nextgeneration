@@ -256,8 +256,10 @@
     --company-contact-url: https://www.cream-collection.de/kontakt;
     --company-logo-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/59b84de7-525d-4992-99ec-ac57b73c25b6/image-640x211.png");
     --clara-image-url: url("https://www.cream-collection.de/wp-content/uploads/go-x/u/8b4f2525-c964-461b-a6a9-daa9ef61f180/l0,t0,w482,h410/image-240x204.jpg");
-    --start-video-url: "";
-  
+    --start-video-url: "https://player.vimeo.com/video/1049188585?h=7448c4e415&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479";
+
+
+ 
     --company-logo-width: 200px;
     --company-logo-height: 80px;
     --media-company-logo-width: 200px;
@@ -451,7 +453,7 @@
 
 
 
- /* ########################customer ######################## */
+/* ########################customer ######################## */
 
 
 /* ########################Creditreform München######################## 
@@ -1332,11 +1334,13 @@
   
   
   #video-container {
-    width: 75%;
+    width: 100%;
     max-height: 100%;
-    margin: 20px auto;
+    margin-top: 10px;
     overflow: hidden;
-    padding-top: 56.25%;
+    aspect-ratio: 16 / 9; /* Setzt das Verhältnis fest */
+    overflow: hidden; /* Verhindert Überlauf */
+    position: relative; /* Referenz für absolutes Positionieren */
   }
 
   iframe {
@@ -1345,7 +1349,6 @@
     left: 0%;
     width: 100%;
     height: 100%;
-    max-height: 100%;
     border: none;
   }
 
@@ -6186,7 +6189,15 @@
   
           </div>
   
-  
+          <div id="video-container">
+            <iframe 
+                id="video-frame"
+                src="" 
+                title="Video player" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+          </div>  
   
   
           <div id="chatbot-messages">
@@ -6202,15 +6213,7 @@
           </div>
   
   
-          <div id="video-container">
-            <iframe 
-                id="video-frame"
-                src="" 
-                title="YouTube video player" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
-          </div>
+
 
 
   
